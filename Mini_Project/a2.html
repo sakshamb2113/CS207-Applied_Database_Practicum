@@ -1,0 +1,113 @@
+<html>
+<head>
+<script>
+function getresult(e){
+    e.preventDefault();
+
+
+if (window.XMLHttpRequest){
+
+    xmlhttp=new XMLHttpRequest();
+
+}else{
+
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+
+}
+    var str;
+    str="";
+    xmlhttp.onreadystatechange=function() {
+                          
+
+    if(xmlhttp.readyState==4 && xmlhttp.status==200){
+
+        document.getElementById("txt").innerHTML=xmlhttp.responseText;
+
+    }
+    }
+    str+="&s="+document.getElementById("start").value
+    str+="&e="+document.getElementById("end").value
+    str+="&mydropdown="+document.getElementById("dd").value;
+    if(document.getElementById("x").checked)
+    {
+      str+="&max=max";
+    }
+    if(document.getElementById("n").checked)
+    {
+      str+="&min=min";
+    }
+    if(document.getElementById("a").checked)
+    {
+      str+="&avg=avg";
+    }
+    console.log(str);
+
+
+    xmlhttp.open("GET","action.php?"+str,true);
+
+    xmlhttp.send();
+    }
+</script>
+<link href="Mini_Project.css" type="text/css" rel="stylesheet">
+<title>Mini Project</title>
+</head>
+
+<body>
+
+ <h2>Mini Project<br></h2>
+  
+ <div class="box">
+    <form>
+      
+      <label> FROM :</label>
+      <input type="text" name="s" value="dd/mm/yyyy" id="start">
+      
+      <label> TO :</label>
+      <input type="text" name="e" value="dd/mm/yyyy" id="end">
+      <br><br>
+
+      <!--<div class="dropdown">
+      <button onclick="myFunction()" class="dropbtn">Home Page</button>
+      <br>
+ 
+      <div id="myDropdown" class="dropdown-content">
+      <a href="https://www.google.com">Google</a>
+      <a href="https://www.iitmandi.ac.in">IIT Mandi</a>
+      </div>
+      </div>
+      <div class="dropdown">
+      <button class="dropbtn">Dropdown</button>
+      <div class="dropdown-content">
+      <h2>Temperature</h2>
+      <h2>CO2</h2>
+      </div>
+      </div>-->
+<select name="mydropdown" id="dd">
+<option value="t">Temperature</option>
+<option value="co">CO Concentration</option>
+<option value="h">Humidity</option>
+<option value="no2">NO Concentration</option>
+<option value="o3">Ozone Concentration</option>
+<option value="p">Pressure</option>
+<option value="so2">SO2 Concentration</option>
+<option value="ws">Wind Speed</option>
+<option value="pm_1_0">Particulate Matter(Dia<=1 um)</option>
+<option value="pm_2_5">Particulate Matter(Dia<=2.5 um)</option>
+<option value="pm_10">Particulate Matter(Dia<=10 um)</option>
+
+</select>
+      <br>
+      <br>
+      <button type="submit" id="bt" name="action" value="Submit Query" onclick="getresult(event)">Submit</button>
+      <br><br>
+
+      <input type="radio" name="max" value="max" id="x"> MAXIMUM
+      <br>
+      <input type="radio" name="min" value="min" id="n"> MINIMUM
+      <br>
+      <input type="radio" name="avg" value="avg" id="a"> AVERAGE
+    </form>
+  </div>
+<div> <p><span id="txt"></span></p></div>
+</body>
+</html>

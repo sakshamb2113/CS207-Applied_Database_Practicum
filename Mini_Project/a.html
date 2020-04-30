@@ -1,0 +1,69 @@
+<html>
+<head>
+<link href="Mini_Project.css" type="text/css" rel="stylesheet">
+<title>Mini Project</title>
+</head>
+<script type="text/javascript" src="js/Chart.min.js"></script>
+
+<body>
+
+ <h2>Mini Project<br></h2>
+  
+ <div class="box">
+    <form method="GET" id="felement" action="action.php">
+      
+      <label> FROM :</label>
+      <input type="text" name="s" value="dd/mm/yyyy">
+      
+      <label> TO :</label>
+      <input type="text" name="e" value="dd/mm/yyyy">
+      <br><br>
+
+      <!--<div class="dropdown">
+      <button onclick="myFunction()" class="dropbtn">Home Page</button>
+      <br>
+ 
+      <div id="myDropdown" class="dropdown-content">
+      <a href="https://www.google.com">Google</a>
+      <a href="https://www.iitmandi.ac.in">IIT Mandi</a>
+      </div>
+      </div>
+      <div class="dropdown">
+      <button class="dropbtn">Dropdown</button>
+      <div class="dropdown-content">
+      <h2>Temperature</h2>
+      <h2>CO2</h2>
+      </div>
+      </div>-->
+      <select name="mydropdown">
+        <option value="t">Temperature</option>
+        <option value="co">CO Concentration</option>
+        <option value="h">Humidity</option>
+        <option value="no2">NO Concentration</option>
+        <option value="o3">Ozone Concentration</option>
+        <option value="p">Pressure</option>
+        <option value="so2">SO2 Concentration</option>
+        <option value="ws">Wind Speed</option>
+        <option value="pm_1_0">Particulate Matter(Dia<=1 um)</option>
+        <option value="pm_2_5">Particulate Matter(Dia<=2.5 um)</option>
+        <option value="pm_10">Particulate Matter(Dia<=10 um)</option>
+      </select>
+      <input type="submit" id="bt" name="action" value="Submit Query"/>
+      <br><br>
+      <input type="radio" name="max" value="max"> MAXIMUM
+      <br>
+      <input type="radio" name="min" value="min"> MINIMUM
+      <br>
+      <input type="radio" name="avg" value="avg"> AVERAGE
+    </form>
+
+
+    <br>
+    <br>
+    <div id="chart-container">
+      <canvas id="graphCanvas"></canvas>
+  </div>
+  </div>
+
+</body>
+</html>
